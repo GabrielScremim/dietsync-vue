@@ -4,12 +4,11 @@ const mysql = require("mysql2");
 const app = express();
 const port = 3001;
 
-// Conexão com o banco MySQL
 const db = mysql.createConnection({
-  host: "152.67.45.167",   // IP ou hostname do servidor MySQL
-  user: "fodac",        // seu usuário
-  password: "senha123",   // sua senha
-  database: "dietsync2" // nome do banco
+  host: process.env.DB_HOST,     // Usando variável de ambiente
+  user: process.env.DB_USER,     // Usando variável de ambiente
+  password: process.env.DB_PASSWORD,  // Usando variável de ambiente
+  database: process.env.DB_NAME  // Usando variável de ambiente
 });
 
 // Testar conexão
