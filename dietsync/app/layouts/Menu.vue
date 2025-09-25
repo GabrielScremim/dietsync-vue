@@ -86,33 +86,33 @@ export default {
 
             mostrarBarraNavegacao('header-toggle', 'nav-bar', 'body-pd', 'header')
 
-            // Código para verificação de senhas
-            const verificarSenhas = () => {
-                const senha = document.getElementById('nova_senha').value
-                const confirmarSenha = document.getElementById('confirmar_senha').value
-                const senhaFeedback = document.getElementById('senhaFeedback')
+            //         // Código para verificação de senhas
+            //         const verificarSenhas = () => {
+            //             const senha = document.getElementById('nova_senha').value
+            //             const confirmarSenha = document.getElementById('confirmar_senha').value
+            //             const senhaFeedback = document.getElementById('senhaFeedback')
 
-                if (senha !== confirmarSenha) {
-                    senhaFeedback.style.display = 'block'
-                    document.getElementById('nova_senha').classList.add('is-invalid')
-                    document.getElementById('confirmar_senha').classList.add('is-invalid')
-                } else {
-                    senhaFeedback.style.display = 'none'
-                    document.getElementById('nova_senha').classList.remove('is-invalid')
-                    document.getElementById('confirmar_senha').classList.remove('is-invalid')
-                }
-            }
+            //             if (senha !== confirmarSenha) {
+            //                 senhaFeedback.style.display = 'block'
+            //                 document.getElementById('nova_senha').classList.add('is-invalid')
+            //                 document.getElementById('confirmar_senha').classList.add('is-invalid')
+            //             } else {
+            //                 senhaFeedback.style.display = 'none'
+            //                 document.getElementById('nova_senha').classList.remove('is-invalid')
+            //                 document.getElementById('confirmar_senha').classList.remove('is-invalid')
+            //             }
+            //         }
 
-            const novaSenha = document.getElementById('nova_senha')
-            const confirmarSenha = document.getElementById('confirmar_senha')
+            //         const novaSenha = document.getElementById('nova_senha')
+            //         const confirmarSenha = document.getElementById('confirmar_senha')
 
-            // Adicionar os listeners se os elementos existirem
-            if (novaSenha && confirmarSenha) {
-                novaSenha.addEventListener('input', verificarSenhas)
-                confirmarSenha.addEventListener('input', verificarSenhas)
-            } else {
-                console.error('Os campos de senha não foram encontrados.')
-            }
+            //         // Adicionar os listeners se os elementos existirem
+            //         if (novaSenha && confirmarSenha) {
+            //             novaSenha.addEventListener('input', verificarSenhas)
+            //             confirmarSenha.addEventListener('input', verificarSenhas)
+            //         } else {
+            //             console.error('Os campos de senha não foram encontrados.')
+            //         }
         }
     }
 }
