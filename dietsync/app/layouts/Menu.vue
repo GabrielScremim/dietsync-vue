@@ -2,61 +2,62 @@
     <div class="l-navbar" id="nav-bar">
         <nav class="nav">
             <div>
-                <NuxtLink to="/home" class="nav_logo">
+                <NuxtLink to="/home" class="nav_logo" :class="{ active: $route.path === '/home' }">
                     <img src="http://152.67.45.167/img/vertical_1.png" alt="Logo DietSync" style="height: 50px;">
                 </Nuxtlink>
 
                 <div class="nav_list">
-                    <NuxtLink to="/home" class="nav_link">
+                    <NuxtLink to="/home" class="nav_link" :class="{ active: $route.path === '/home' }">
                         <i class="bi bi-house"></i>
                         <span class="nav_name">Home</span>
-                    </Nuxtlink>
+                    </NuxtLink>
 
-                    <NuxtLink to="/registrar-dieta" class="nav_link">
+                    <NuxtLink to="/registrar-dieta" class="nav_link" :class="{ active: $route.path === '/registrar-dieta' }">
                         <i class="bi bi-egg-fried"></i>
                         <span class="nav_name">Registrar Dieta</span>
-                    </Nuxtlink>
+                    </NuxtLink>
 
-                    <NuxtLink to="/registrar-treino" class="nav_link">
+                    <NuxtLink to="/registrar-treino" class="nav_link" :class="{ active: $route.path === '/registrar-treino' }">
                         <i class="bi bi-clipboard-heart"></i>
                         <span class="nav_name">Registrar Treino</span>
-                    </Nuxtlink>
+                    </NuxtLink>
 
-                    <NuxtLink to="/registrar-receita" class="nav_link">
+                    <NuxtLink to="/registrar-receita" class="nav_link" :class="{ active: $route.path === '/registrar-receita' }">
                         <i class="bi bi-clipboard-plus"></i>
                         <span class="nav_name">Registrar Receitas</span>
-                    </Nuxtlink>
-                    <NuxtLink to="/dieta" class="nav_link">
+                    </NuxtLink>
+
+                    <NuxtLink to="/dieta" class="nav_link" :class="{ active: $route.path === '/dieta' }">
                         <i class="bi bi-ui-checks-grid"></i>
                         <span class="nav_name">Dieta</span>
-                    </Nuxtlink>
+                    </NuxtLink>
 
-                    <NuxtLink to="/treinos" class="nav_link">
+                    <NuxtLink to="/treinos" class="nav_link" :class="{ active: $route.path === '/treinos' }">
                         <i class="bi bi-heart-pulse-fill"></i>
                         <span class="nav_name">Treinos</span>
-                    </Nuxtlink>
+                    </NuxtLink>
 
-                    <NuxtLink to="/evolucao" class="nav_link">
+                    <NuxtLink to="/evolucao" class="nav_link" :class="{ active: $route.path === '/evolucao' }">
                         <i class="bi bi-graph-up-arrow"></i>
                         <span class="nav_name">Evolução</span>
-                    </Nuxtlink>
+                    </NuxtLink>
 
-                    <NuxtLink to="/receitas" class="nav_link">
+                    <NuxtLink to="/receitas" class="nav_link" :class="{ active: $route.path === '/receitas' }">
                         <i class="bi bi-journal-check"></i>
                         <span class="nav_name">Receitas</span>
-                    </Nuxtlink>
+                    </NuxtLink>
 
-                    <NuxtLink to="/agradecimentos" class="nav_link">
+                    <NuxtLink to="/agradecimentos" class="nav_link" :class="{ active: $route.path === '/agradecimentos' }">
                         <i class="bi bi-hearts"></i>
                         <span class="nav_name">Agradecimentos</span>
-                    </Nuxtlink>
+                    </NuxtLink>
                 </div>
             </div>
 
-            <NuxtLink to="/config" class="nav_link">
+            <NuxtLink to="/config" class="nav_link" :class="{ active: $route.path === '/config' }">
                 <i class="bi bi-gear"></i>
                 <span class="nav_name">Configurações</span>
-            </Nuxtlink>
+            </NuxtLink>
         </nav>
     </div>
 </template>

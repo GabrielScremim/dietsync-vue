@@ -3,6 +3,7 @@
         <Header />
         <Menu />
     </NuxtLayout>
+
     <div class="main">
         <NuxtPage />
     </div>

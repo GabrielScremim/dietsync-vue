@@ -42,7 +42,7 @@
 import { ref } from 'vue';
 const treinos = ref([]);
 
-const id = 7;
+const id = 40;
 try {
     const { data } = await useFetch(`http://localhost:3001/treinos/usuario/${id}`);
     if (Array.isArray(data.value)) {

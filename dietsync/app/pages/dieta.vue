@@ -29,7 +29,7 @@
                     <li><strong>Gorduras:</strong> {{ dieta.gorduras }}</li>
                     <li><strong>Alimentos:</strong>
                         <ul>
-                            <li v-for="(alimento, index) in JSON.parse(dieta.alimentos)" :key="index">
+                            <li v-for="(alimento, index) in dieta.alimentos.split(',')" :key="index">
                                 {{ alimento.trim() }}
                             </li>
                         </ul>
@@ -54,7 +54,7 @@ const toggleCollapse = (id) => {
 };
 
 // ID do usuário
-const id = 7;
+const id = 40;
 
 // Carrega dados da API
 try {

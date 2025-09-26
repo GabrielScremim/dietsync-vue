@@ -12,8 +12,8 @@
             </li>
             <li><strong>Exercícios:</strong>
                 <ol>
-                    <li v-for="(item, i) in exercicios" :key="i">
-                        {{ item }}
+                    <li v-for="(treinoData, index) in treinoData.exercicios.split(',')" :key="index">
+                        {{ treinoData.trim() }}
                     </li>
                 </ol>
             </li>
@@ -29,7 +29,7 @@
 import { useRoute } from 'vue-router';
 
 const route = useRoute();
-const id = 7;
+const id = 40;
 const id_treino = route.params.id;
 const { data: treino, error } = await useFetch(`http://localhost:3001/treinos/usuario/${id}/treino/${id_treino}`);
 
