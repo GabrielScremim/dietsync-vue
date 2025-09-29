@@ -1,7 +1,9 @@
+require('dotenv').config();
 const express = require("express");
 const cors = require("cors");
 const mysql = require("mysql2/promise"); // 👈 versão com promessas
 const bcrypt = require("bcrypt");
+const jwt = require('jsonwebtoken');
 
 const app = express();
 app.use(express.json());
@@ -11,10 +13,10 @@ app.use(cors());
 
 // Conexão com o banco MySQL (pool com promessas)
 const db = mysql.createPool({
-  host: "152.67.45.167",
-  user: "fodac",
-  password: "senha123",
-  database: "dietsync_vue"
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME
 });
 
 // =============================
@@ -24,9 +26,7 @@ app.post("/login", async (req, res) => {
   try {
     const { email, password } = req.body;
 
-    const [rows] = await db.query("SELECT * FROM users WHERE email = ?", [
-      email
-    ]);
+    const [rows] = await db.query("SELECT * FROM users WHERE email = ?", [email]);
     const user = rows[0];
 
     if (!user) {
@@ -39,19 +39,28 @@ app.post("/login", async (req, res) => {
       return res.status(401).json({ message: "Senha incorreta" });
     }
 
+    // Gerar o token JWT
+    const token = jwt.sign(
+      { id: user.id, nome: user.name, email: user.email },
+      process.env.JWT_SECRET, // Use uma chave secreta para assinar o token (geralmente definida em .env)
+      { expiresIn: '1h' } // Definindo o tempo de expiração do token (1 hora aqui)
+    );
+
     res.json({
       message: "Login realizado com sucesso",
       user: {
         id: user.id,
         nome: user.name,
         email: user.email
-      }
+      },
+      token: token // Enviando o token gerado para o cliente
     });
   } catch (err) {
     console.error("Erro no login:", err);
     res.status(500).json({ message: "Erro no login" });
   }
 });
+
 
 // =============================
 // REGISTRAR USUÁRIO

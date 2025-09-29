@@ -68,16 +68,6 @@
                             {{ dieta.nome_dieta }}
                         </button>
                     </div>
-                    <div class="col-lg-2 col-sm-12">
-                        <nuxt-link :to="dieta.id_dieta">
-                            <Button title="Excluir" corBtn="danger" />
-                        </nuxt-link>
-                    </div>
-                    <div class="col-lg-2">
-                        <nuxt-link :to="dieta.id_dieta">
-                            <Button title="Editar Dieta" corBtn="primary" />
-                        </nuxt-link>
-                    </div>
                 </div>
 
                 <!-- Collapse controlado por Vue -->
@@ -110,8 +100,6 @@
                     <tr>
                         <th>Nome da Receita</th>
                         <th>Detalhes</th>
-                        <th>Excluir</th>
-                        <th>Editar</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -122,20 +110,6 @@
                         <td>
                             <NuxtLink :to="`/treinos/${treino.id}`">
                                 <Button title="Ver Detalhes" corBtn="success" />
-                            </NuxtLink>
-                        </td>
-                        <td>
-                            <NuxtLink :to="`/treinos/${treino.id}/excluir`">
-                                <Button corBtn="danger">
-                                    <i class="bi bi-x-circle"></i>
-                                </Button>
-                            </NuxtLink>
-                        </td>
-                        <td>
-                            <NuxtLink :to="`/treinos/${treino.id}/editar`">
-                                <Button corBtn="primary">
-                                    <i class="bi bi-pencil-square"></i>
-                                </Button>
                             </NuxtLink>
                         </td>
                     </tr>
