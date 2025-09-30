@@ -25,7 +25,7 @@
                     </Button>
                 </td>
                 <td>
-                    <NuxtLink href="#">
+                    <NuxtLink :to="`treinos/editar/${treino.id}`">
                         <Button corBtn="primary">
                             <i class="bi bi-pencil-square"></i>
                         </Button>

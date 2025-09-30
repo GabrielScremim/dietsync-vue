@@ -34,7 +34,7 @@
                 <td>{{ receita.nome_receita }}</td>
                 <td>
                     <NuxtLink :to="`/receitas/${receita.id_receitas}`">
-                      <Button title="Ver Detalhes" corBtn="success" />
+                        <Button title="Ver Detalhes" corBtn="success" />
                     </NuxtLink>
                 </td>
                 <td>
@@ -46,9 +46,9 @@
                     </form>
                 </td>
                 <td>
-                    <a href="registrar-receita">
-                        <button type="submit" class="btn btn-success"><i class="bi bi-pencil-square"></i></button>
-                    </a>
+                    <NuxtLink :to="`/receitas/editar/${receita.id_receitas}`">
+                        <button type="submit" class="btn btn-primary"><i class="bi bi-pencil-square"></i></button>
+                    </NuxtLink>
                 </td>
             </tr>
         </tbody>
@@ -62,7 +62,6 @@ const receitas = ref([]); // Aqui vamos guardar as receitas
 
 try {
     const { data } = await useFetch('http://localhost:3001/receitas');
-    console.log("Resultado do fetch", data.value);
 
     // Atualiza a variável reativa com as receitas recebidas
     if (Array.isArray(data.value)) {
