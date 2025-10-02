@@ -1,24 +1,22 @@
 <template>
     <h2>Receitas Disponíveis</h2>
-    <form method="GET" action="">
-        <div class="row">
-            <div class="col-lg-4 col-md-12 col-sm-12">
-                <!-- Formulário de filtro e pesquisa -->
-                <label for="filtroReceita">Filtrar por:</label>
-                <select name="filtroReceita" id="filtroReceita" class="form-select">
-                    <option value="todas">
-                        Todas as Receitas
-                    </option>
-                    <option value="MinhasReceitas">
-                        Minhas Receitas
-                    </option>
-                </select>
-            </div>
-            <div class="col">
-                <Button title="Aplicar Filtro" corBtn="success" />
-            </div>
+    <div class="row">
+        <div class="col-lg-4 col-md-12 col-sm-12">
+            <!-- Formulário de filtro e pesquisa -->
+            <label for="filtroReceita">Filtrar por:</label>
+            <select name="filtroReceita" id="filtroReceita" class="form-select">
+                <option value="todas">
+                    Todas as Receitas
+                </option>
+                <option value="MinhasReceitas">
+                    Minhas Receitas
+                </option>
+            </select>
         </div>
-    </form>
+        <div class="col">
+            <Button title="Aplicar Filtro" corBtn="success" />
+        </div>
+    </div>
 
     <Table>
         <thead>
@@ -38,12 +36,9 @@
                     </NuxtLink>
                 </td>
                 <td>
-                    <form method="get" action="">
-                        <input type="hidden" name="id_excluir_receita" value="' . $receita['id_receitas'] . '">
-                        <button type="submit" class="btn btn-danger">
-                            <i class="bi bi-x-circle"></i>
-                        </button>
-                    </form>
+                    <Button corBtn="danger" @click="ExcluirReceita(receita.id_receitas)">
+                        <i class="bi bi-x-circle"></i>
+                    </Button>
                 </td>
                 <td>
                     <NuxtLink :to="`/receitas/editar/${receita.id_receitas}`">
@@ -69,5 +64,26 @@ try {
     }
 } catch (error) {
     console.error("Erro ao fazer o fetch:", error);
+}
+
+const ExcluirReceita = async (id) => {
+    if (confirm("Tem certeza que deseja excluir esta Receita?")) {
+        try {
+            const res = await fetch(`http://localhost:3001/receita/excluir/${id}`, {
+                method: 'DELETE',
+            });
+
+            if (res.ok) {
+                data.value = data.value.filter(e => e.id !== id);
+                alert("Receita excluída com sucesso!");
+            } else {
+                const erro = await res.json();
+                alert("Erro ao excluir: " + erro.message);
+            }
+        } catch (error) {
+            console.error("Erro ao excluir:", error);
+            alert("Erro ao conectar com a API.");
+        }
+    }
 }
 </script>
