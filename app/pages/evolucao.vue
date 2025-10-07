@@ -77,7 +77,12 @@ const criarEvolucao = async () => {
 onMounted(async () => {
     try {
         // Realiza o fetch assim que o componente for montado
-        const response = await fetch('http://localhost:3001/evolucaos');
+        const response = await fetch('http://localhost:3001/evolucaos/usuario/40', {
+            method: 'GET',
+            headers: {
+                'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NDEsIm5vbWUiOiJzdHJpbmciLCJlbWFpbCI6InN0cmluZyIsImlhdCI6MTc1OTUxMDQ4NywiZXhwIjoxNzU5NTE0MDg3fQ.FiHgEs0TKTd9C2VmedAnRJqiaNpGkcaGhdumNpGskoE'
+            }
+        });
         const result = await response.json();  // Assuming the response is in JSON format
         data.value = result;
     } catch (error) {

@@ -56,7 +56,13 @@ import { ref, onMounted } from 'vue';
 const receitas = ref([]); // Aqui vamos guardar as receitas
 
 try {
-    const { data } = await useFetch('http://localhost:3001/receitas');
+    const { data } = await useFetch('http://localhost:3001/receitas', {
+        method: 'GET',
+        headers: {
+            'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NDEsIm5vbWUiOiJzdHJpbmciLCJlbWFpbCI6InN0cmluZyIsImlhdCI6MTc1OTUxMDQ4NywiZXhwIjoxNzU5NTE0MDg3fQ.FiHgEs0TKTd9C2VmedAnRJqiaNpGkcaGhdumNpGskoE'
+        }
+    }
+    );
 
     // Atualiza a variável reativa com as receitas recebidas
     if (Array.isArray(data.value)) {

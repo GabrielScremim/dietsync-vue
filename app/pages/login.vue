@@ -37,7 +37,6 @@
         </div>
     </div>
 </template>
-
-<style scoped>
+<style>
 @import url('../assets/css/style1.css');
 </style>

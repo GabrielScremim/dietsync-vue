@@ -50,8 +50,11 @@ const form = ref({
 const createReceita = async () => {
     try {
         console.log("Dados enviados", form.value);
-        const res = await $fetch('http://localhost:3001/criarReceita', {
+        const res = await $fetch('http://localhost:3001/receitas', {
             method: 'POST',
+            headers: {
+                'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NDEsIm5vbWUiOiJzdHJpbmciLCJlbWFpbCI6InN0cmluZyIsImlhdCI6MTc1OTUxMDQ4NywiZXhwIjoxNzU5NTE0MDg3fQ.FiHgEs0TKTd9C2VmedAnRJqiaNpGkcaGhdumNpGskoE'
+            },
             body: JSON.stringify(form.value)
         });
 
@@ -64,7 +67,7 @@ const createReceita = async () => {
             alert("Erro: ", data.message);
         }
     } catch (error) {
-        console.log(err);
+        console.log(error);
         alert("Erro ao conectar com a API.")
     }
 }

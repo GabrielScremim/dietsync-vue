@@ -54,7 +54,7 @@
                 </div>
             </div>
 
-            <NuxtLink to="/config" class="nav_link" :class="{ active: $route.path === '/config' }">
+            <NuxtLink to="/config/40" class="nav_link" :class="{ active: $route.path === '/config' }">
                 <i class="bi bi-gear"></i>
                 <span class="nav_name">Configurações</span>
             </NuxtLink>
