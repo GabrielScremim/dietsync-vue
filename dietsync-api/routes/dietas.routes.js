@@ -30,24 +30,70 @@ router.get("/", verifyToken, dietasController.getDietas);
 
 /**
  * @swagger
- * /dietas/{usuario_id}:
+ * /dietas/{id}:
  *   get:
- *     summary: Lista todas as dietas de um usuário
+ *     summary: Retorna uma dieta específica pelo ID
  *     tags: [Dietas]
  *     parameters:
  *       - in: path
- *         name: usuario_id
+ *         name: id
  *         required: true
  *         schema:
  *           type: integer
- *         description: ID do usuário
+ *         description: ID da dieta
  *     responses:
  *       200:
- *         description: Lista de dietas do usuário
+ *         description: Dieta encontrada
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 id_dieta:
+ *                   type: integer
+ *                 nome:
+ *                   type: string
+ *                 tipo_dieta:
+ *                   type: string
+ *                 calorias:
+ *                   type: number
+ *                 proteinas:
+ *                   type: number
+ *                 carboidratos:
+ *                   type: number
+ *                 gorduras:
+ *                   type: number
+ *                 data:
+ *                   type: string
+ *                   format: date
+ *                 refeicao:
+ *                   type: string
+ *                 quantidade:
+ *                   type: number
+ *                 alimentos:
+ *                   type: string
+ *                 observacoes:
+ *                   type: string
  *       404:
- *         description: Nenhuma dieta encontrada
+ *         description: Dieta não encontrada
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *       500:
+ *         description: Erro interno no servidor
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 error:
+ *                   type: string
  */
-router.get("/:usuario_id", verifyToken, dietasController.getDietasByUser);
+router.get("/:id", verifyToken, dietasController.getDietaByUser);
 
 /**
  * @swagger

@@ -85,11 +85,12 @@ router.get("/usuario/:id/treino/:id_treino", verifyToken, treinosController.getT
  *               tipo: { type: string }
  *               nome_treino: { type: string }
  *               exercicios: { type: string }
- *               repeticoes: { type: string }
- *               series: { type: string }
- *               objetivo: { type: string }
- *               duracao: { type: string }
- *               frequencia: { type: string }
+ *               repeticoes: { type: integer }
+ *               series: { type: integer }
+ *               objetivo: { type: integer }
+ *               duracao: { type: integer }
+ *               frequencia: { type: integer }
+ *               dia_treino: { type: integer }
  *     responses:
  *       200:
  *         description: Treino criado com sucesso
@@ -124,11 +125,12 @@ router.post("/", verifyToken, treinosController.createTreino);
  *               tipo: { type: string }
  *               nome_treino: { type: string }
  *               exercicios: { type: string }
- *               repeticoes: { type: string }
- *               series: { type: string }
- *               objetivo: { type: string }
- *               duracao: { type: string }
- *               frequencia: { type: string }
+ *               repeticoes: { type: integer }
+ *               series: { type: integer }
+ *               objetivo: { type: integer }
+ *               duracao: { type: integer }
+ *               frequencia: { type: integer }
+ *               dia_treino: { type: integer }
  *     responses:
  *       200:
  *         description: Treino atualizado com sucesso

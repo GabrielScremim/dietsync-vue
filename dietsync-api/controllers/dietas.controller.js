@@ -18,7 +18,7 @@ exports.createDieta = async (req, res) => {
     } = req.body;
 
     const sql =
-      `INSERT INTO dietas (nome_dieta, tipo_dieta, calorias, proteinas, carboidratos, gorduras, data_dieta, refeicao, quantidade, alimentos, observacoes,  fk_id_usuario_dieta) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 40)`;
+      `INSERT INTO dietas (nome_dieta, tipo_dieta, calorias, proteinas, carboidratos, gorduras, data_dieta, refeicao, quantidade, alimentos, observacoes,  fk_id_usuario_dieta) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
     const [result] = await db.query(sql, [
       nome_dieta,
       tipo_dieta,
@@ -31,6 +31,7 @@ exports.createDieta = async (req, res) => {
       quantidade,
       alimentos,
       observacoes,
+      fk_id_usuario_dieta
     ]);
 
     res.json({
@@ -55,6 +56,19 @@ exports.getDietasByUser = async (req, res) => {
   try {
     const { id } = req.params;
     const [results] = await db.query("SELECT * FROM dietas WHERE fk_id_usuario_dieta = ?", [id]);
+
+    if (results.length === 0) return res.status(404).json({ message: "Dieta não encontrada" });
+
+    res.json(results);
+  } catch (err) {
+    res.status(500).json({ error: "Erro ao buscar dieta" });
+  }
+};
+
+exports.getDietaByUser = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const [results] = await db.query("SELECT * FROM dietas WHERE id_dieta = ?", [id]);
 
     if (results.length === 0) return res.status(404).json({ message: "Dieta não encontrada" });
 

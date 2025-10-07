@@ -12,12 +12,13 @@ exports.createEvolucao = async (req, res) => {
     } = req.body;
 
     const sql =
-      `INSERT INTO evolucaos (data, peso, altura, cintura, fk_id_evolucaos) VALUES (?, ?, ?, ?, 40)`;
+      `INSERT INTO evolucaos (data, peso, altura, cintura, fk_id_evolucaos) VALUES (?, ?, ?, ?, ?)`;
     const [result] = await db.query(sql, [
       data,
       peso,
       altura,
       cintura,
+      fk_id_evolucaos
     ]);
 
     res.json({
@@ -77,11 +78,13 @@ exports.deleteEvolucao = async (req, res) => {
     const { id } = req.params;
     const [result] = await db.query("DELETE FROM evolucaos WHERE id = ?", [id]);
 
-    if (result.affectedRows === 0) return res.status(404).json({ message: "Evolução não encontrada" });
+    if (result.affectedRows === 0) {
+      return res.status(404).json({ message: "Evolucao não encontrada" });
+    }
 
-    res.json({ message: "Evolução deletada com sucesso!" });
+    res.json({ message: "Evolucao excluída com sucesso!" });
   } catch (err) {
-    console.error("Erro ao deletar evolução:", err);
-    res.status(500).json({ erro: "Erro ao deletar evolução" });
+    console.error("Erro ao excluir evolucao:", err);
+    res.status(500).json({ error: "Erro ao excluir evolucao" });
   }
-};
+}

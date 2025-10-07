@@ -62,7 +62,7 @@ const verifyToken = require("../middlewares/auth.middleware");
  *       400:
  *         description: Campos obrigatórios faltando
  */
-router.post("/registrarUsuario", verifyToken, usersController.createUser);
+router.post("usuario/registrarUsuario", usersController.createUser);
 
 /**
  * @swagger
